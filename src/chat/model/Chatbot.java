@@ -4,8 +4,9 @@ import java.util.ArrayList;
 
 /**
  * Base version of the 2015 Chatbot class. Only stub methods are provided.
- * Students will complete methods as part * of the project. * @author Cody
- * Henrichsen * @version 1.0 10/14/15
+ * Students will complete methods as part * of the project.
+ * @author Mark Palesh 
+ * @version 1.0 10/14/16
  */
 public class Chatbot 
 {
@@ -36,8 +37,16 @@ public class Chatbot
 	 * String is empty or null, otherwise returns true. * @param currentInput * @return
 	 * A true or false based on the length of the supplied String.
 	 */
-	public boolean lengthChecker(String currentInput) {
-		return false;
+	public boolean lengthChecker(String currentInput) 
+	{
+		boolean hasLength = false;
+		
+		if (currentInput != null && currentInput.length() >0)
+		{
+			hasLength = true;
+		}
+		
+		return hasLength;
 	}
 
 	/**
