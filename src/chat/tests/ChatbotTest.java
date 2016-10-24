@@ -111,7 +111,10 @@ public class ChatbotTest
 		assertTrue("Meme Topic check", sampleBot.getMemesList().contains("harambe"));
 		assertTrue("Meme Topic check", sampleBot.getMemesList().contains("john cena"));
 		assertTrue("Meme Topic check", sampleBot.getMemesList().contains("Dang Daniel"));
-		
+		assertTrue("Meme Topic check", sampleBot.getMemesList().contains("Spongebob"));
+		assertTrue("Meme Topic check", sampleBot.getMemesList().contains("JUST DO IT!!!"));
+		assertTrue("Meme Topic check", sampleBot.getMemesList().contains("Pepe the frog"));
+		assertTrue("Meme Topic check", sampleBot.getMemesList().contains("Pepe the frog"));
 		
 
 	}
@@ -125,7 +128,8 @@ public class ChatbotTest
 		assertFalse("Political Topic check - wrong date", sampleBot.getPoliticalTopicList().contains("11/4/16"));
 		assertTrue("Political Topic check", sampleBot.getPoliticalTopicList().contains("11/8/16"));
 		assertFalse("Political Topic check - case", sampleBot.getPoliticalTopicList().contains("republican"));
-		assertFalse("Political Topic check - case", sampleBot.getPoliticalTopicList().contains("democrat"));				assertTrue("Topic check", sampleBot.getPoliticalTopicList().contains("liberal"));
+		assertFalse("Political Topic check - case", sampleBot.getPoliticalTopicList().contains("democrat"));				
+		assertTrue("Topic check", sampleBot.getPoliticalTopicList().contains("liberal"));
 		assertTrue("Political Topic check", sampleBot.getPoliticalTopicList().contains("conservative"));
 		assertTrue("Political Topic check", sampleBot.getPoliticalTopicList().contains("Clinton"));
 		assertTrue("Political Topic check", sampleBot.getPoliticalTopicList().contains("Trump"));
@@ -134,6 +138,7 @@ public class ChatbotTest
 		assertTrue("Political Topic check", sampleBot.getPoliticalTopicList().contains("Stein"));
 		assertTrue("Political Topic check", sampleBot.getPoliticalTopicList().contains("Johnson"));
 		assertTrue("Political Topic check", sampleBot.getPoliticalTopicList().contains("election"));
+		assertTrue("Political Topic check", sampleBot.getPoliticalTopicList().contains("Socialist"));
 
 	}
 
