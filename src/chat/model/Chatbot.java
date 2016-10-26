@@ -21,11 +21,12 @@ public class Chatbot
 	 */
 	public Chatbot(String userName) 
 	{
+		this.politicalTopicList = new ArrayList<String>();
 		this.memesList = new ArrayList<String>();
 		this.userName = new String(userName);
 		this.content = new String("Sushi");
 		this.buildMemesList();
-		buildPoliticaTopicsList();
+		this.buildPoliticalTopicsList();
 	}
 
 	private void buildMemesList() {
@@ -80,8 +81,14 @@ public class Chatbot
 	 *            The supplied String to be checked. * @return Whether the
 	 *            String is contained in the ArrayList.
 	 */
-	public boolean politicalTopicChecker(String currentInput) {
-		return false;
+	public boolean politicalTopicChecker(String currentInput)
+	{
+		boolean hasPoliticalTopicChecker = false;
+		
+		if (currentInput.contains(politicalTopicList))
+		{ 
+			hasPoliticalTopicChecker = true;
+		}
 	}
 
 	/**
