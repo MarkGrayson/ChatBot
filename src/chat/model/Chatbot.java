@@ -23,7 +23,9 @@ public class Chatbot
 	{
 		this.memesList = new ArrayList<String>();
 		this.userName = new String(userName);
-		
+		this.content = new String("Sushi");
+		this.buildMemesList();
+		buildPoliticaTopicsList();
 	}
 
 	private void buildMemesList() {
@@ -57,8 +59,16 @@ public class Chatbot
 	 *            The supplied String to be checked. * @return Whether it
 	 *            matches the content area.
 	 */
-	public boolean contentChecker(String currentInput) {
-		return false;
+	public boolean contentChecker(String currentInput) 
+	{
+		boolean hasContent = false;
+		
+		if (currentInput.contains(content))
+		{
+			hasContent = true;
+		}
+		
+		return hasContent;
 	}
 
 	/**
