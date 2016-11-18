@@ -87,7 +87,7 @@ public class Chatbot
 	{
 		boolean hasPoliticalTopicChecker = false;
 		
-		if (currentInput.contains(politicalTopicList))
+		if (currentInput.equals(politicalTopicList.get)
 		{ 
 			hasPoliticalTopicChecker = true;
 		}

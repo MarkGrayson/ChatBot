@@ -121,6 +121,7 @@ public class ChatbotTest
 		assertTrue("Meme Topic check", sampleBot.getMemesList().contains("Troll"));
 		assertTrue("Meme Topic check", sampleBot.getMemesList().contains("Drunk guy"));
 		assertTrue("Meme Topic check", sampleBot.getMemesList().contains("Donald Trump"));
+		assertTrue("Meme Topic check", sampleBot.getMemesList().contains("Harry Potter"));
 	}
 	
 	@Test
@@ -141,12 +142,13 @@ public class ChatbotTest
 		assertTrue("Political Topic check", sampleBot.getPoliticalTopicList().contains("Pence"));
 		assertTrue("Political Topic check", sampleBot.getPoliticalTopicList().contains("Stein"));
 		assertTrue("Political Topic check", sampleBot.getPoliticalTopicList().contains("Johnson"));
-		assertTrue("Political Topic check", sampleBot.getPoliticalTopicList().contains("election"));
+		assertTrue("Political Topic check", sampleBot.getPoliticalTopicList().contains("Election"));
 		assertTrue("Political Topic check", sampleBot.getPoliticalTopicList().contains("Socialist"));
 		assertTrue("Political Topic check", sampleBot.getPoliticalTopicList().contains("Abortion"));
 		assertTrue("Political Topic check", sampleBot.getPoliticalTopicList().contains("Immigration"));
 		assertTrue("Political Topic check", sampleBot.getPoliticalTopicList().contains("ISIS"));
 		assertTrue("Political Topic check", sampleBot.getPoliticalTopicList().contains("Terrorism"));
+		assertTrue("Political Topic check", sampleBot.getPoliticalTopicList().contains("Election Day"));
 	}
 
 	

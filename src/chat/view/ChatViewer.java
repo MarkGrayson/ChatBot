@@ -1,6 +1,7 @@
 package chat.view;
 
 import javax.swing.JOptionPane;
+import java.swing.ImageIcon;
 
 public class ChatViewer 
 {
