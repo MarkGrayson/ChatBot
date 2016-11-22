@@ -30,7 +30,8 @@ public class ChatbotController
 	private String useChatbotCheckers(String input)
 	{
 		String answer = "";
-		
+		if(stupidBot.quitChecker(input))
+		{
 		if(stupidBot.contentChecker(input))
 		{
 			answer += "\nYou know my special secret";
@@ -43,6 +44,12 @@ public class ChatbotController
 		if(answer.length() == 0)
 		{
 			answer += "Sorry, I don't know about" + input;
+		}
+		}
+		else
+		{
+			chatView.displayMessage("Thank you for chatting with me :D");
+			System.exit(0);
 		}
 		
 		return answer;
