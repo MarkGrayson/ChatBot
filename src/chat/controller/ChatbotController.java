@@ -27,10 +27,12 @@ public class ChatbotController
 		
 	}
 			
-	private String useChatbotCheckers(String input)
+	public String useChatbotCheckers(String input)
 	{
 		String answer = "";
-		if(stupidBot.quitChecker(input))
+		if(!stupidBot.quitChecker(input))
+	
+			
 		{
 		if(stupidBot.contentChecker(input))
 		{

@@ -10,7 +10,13 @@ import java.util.ArrayList;
  */
 public class Chatbot 
 {
+	/**
+	 * The list of memes.
+	 */
 	private ArrayList<String> memesList;
+	/**
+	 * The list of political topics.
+	 */
 	private ArrayList<String> politicalTopicList;
 	private String userName;
 	private String content;
