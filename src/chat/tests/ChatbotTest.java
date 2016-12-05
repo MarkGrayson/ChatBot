@@ -176,7 +176,15 @@ public class ChatbotTest
 		assertTrue("Incorrect Political Topic check", sampleBot.politicalTopicChecker("Clinton"));
 		assertTrue("Incorrect Political Topic check", sampleBot.politicalTopicChecker("Stein"));
 		assertTrue("Incorrect Political Topic check", sampleBot.politicalTopicChecker("Johnson"));
+		assertTrue("Incorrect Political Topic check", sampleBot.politicalTopicChecker("Election"));
+		assertTrue("Incorrect Political Topic check", sampleBot.politicalTopicChecker("Socialist"));
+		assertTrue("Incorrect Political Topic check", sampleBot.politicalTopicChecker("Abortion"));
+		assertTrue("Incorrect Political Topic check", sampleBot.politicalTopicChecker("Immigration"));
+		assertTrue("Incorrect Political Topic check", sampleBot.politicalTopicChecker("ISIS"));
+		assertTrue("Incorrect Political Topic check", sampleBot.politicalTopicChecker("Terrorism"));
+		assertTrue("Incorrect Political Topic check", sampleBot.politicalTopicChecker("Election Day"));
 	}
+	
 
 	@Test
 	public void testMemeChecker()
@@ -190,7 +198,18 @@ public class ChatbotTest
 		assertTrue("Incorrect meme Topic check", sampleBot.memeChecker("harambe"));
 		assertFalse("Incorrect meme Topic check", sampleBot.memeChecker("ambe"));
 		assertTrue("Incorrect meme Topic check", sampleBot.memeChecker("john cena"));
-		assertFalse("Incorrect meme Topic check", sampleBot.memeChecker("john"));
+		assertTrue("Incorrect meme Topic check", sampleBot.memeChecker("Dang Daniel"));
+		assertTrue("Incorrect meme Topic check", sampleBot.memeChecker("Spongebob"));
+		assertTrue("Incorrect meme Topic check", sampleBot.memeChecker("JUST DO IT!!!"));
+		assertTrue("Incorrect meme Topic check", sampleBot.memeChecker("Pepe the frog"));
+		assertTrue("Incorrect meme Topic check", sampleBot.memeChecker("All the things")); 
+		assertTrue("Incorrect meme Topic check", sampleBot.memeChecker("I can't even"));
+		assertTrue("Incorrect meme Topic check", sampleBot.memeChecker("Kappa"));
+		assertTrue("Incorrect meme Topic check", sampleBot.memeChecker("Senpi"));
+		assertTrue("Incorrect meme Topic check", sampleBot.memeChecker("Troll"));
+		assertTrue("Incorrect meme Topic check", sampleBot.memeChecker("Drunk guy"));
+		assertTrue("Incorrect meme Topic check", sampleBot.memeChecker("Donald Trump"));
+		assertTrue("Incorrect meme Topic check", sampleBot.memeChecker("Harry Potter"));
 	}
 	
 	@Test

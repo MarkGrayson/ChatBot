@@ -1,5 +1,8 @@
 package chat.model;
 
+/**Imports ArrayLists
+ * 
+ */
 import java.util.ArrayList;
 
 /**
@@ -27,17 +30,39 @@ public class Chatbot
 	 */
 	public Chatbot(String userName) 
 	{
+		/**
+		 * Creates an ArrayList for politicalTopicList
+		 */
 		this.politicalTopicList = new ArrayList<String>();
+		/**
+		 * Creates an ArrayList for memeList
+		 */
 		this.memesList = new ArrayList<String>();
+		/**
+		 * Creates an ArrayList for userName
+		 */
 		this.userName = new String(userName);
+		/**
+		 * Creates an ArrayList for content
+		 */
 		this.content = new String("Sushi");
+		/**
+		 * Creates an ArrayList for buildMemesList
+		 */
 		this.buildMemesList();
+		/**
+		 * Creates an ArrayList for buildPoliticalTopicsList
+		 */
 		this.buildPoliticalTopicsList();
 	}
-
+	/**
+	 * Makes buildMemesList private
+	 */
 	private void buildMemesList() {
 	}
-
+	/**
+	 * Makes buildPoliticalTopicsList private
+	 */
 	private void buildPoliticalTopicsList() {
 	}
 
@@ -93,10 +118,13 @@ public class Chatbot
 	{
 		boolean hasPoliticalTopicChecker = false;
 		
-		if (currentInput.equals(politicalTopicList.get)
+		if (currentInput.contains((CharSequence)politicalTopicList))
 		{ 
 			hasPoliticalTopicChecker = true;
 		}
+		
+		return hasPoliticalTopicChecker = true;
+		
 	}
 
 	/**

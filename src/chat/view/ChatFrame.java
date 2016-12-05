@@ -1,9 +1,23 @@
 package chat.view;
 
+/**
+ * Imports JFrame
+ */
 import javax.swing.JFrame;
+/**
+ * Imports Dimensions
+ */
 import java.awt.Dimension;
+/**
+ * Imports ChatbotController
+ */
 import chat.controller.ChatbotController;
 
+/**
+ * Extends JFrame to include baseController and ChatPanel
+ * @author mpal7487
+ *
+ */
 public class ChatFrame extends JFrame
 {
 	
@@ -18,7 +32,9 @@ public class ChatFrame extends JFrame
 		
 		this.setupFrame();
 	}
-	
+	/**
+	 * Sets up Frame with Title ContentPane Size and Visibile
+	 */
 	private void setupFrame()
 	{
 		this.setContentPane(apppanel);;
