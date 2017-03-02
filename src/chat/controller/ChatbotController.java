@@ -27,9 +27,7 @@ public class ChatbotController
 		chatView = new ChatViewer();
 
 	}
-/**
- * Starts the program by asking a question. Then check for user response, and replys.
- */
+	
 	public void start()
 	{
 		String response = chatView.collectResponse("What do you want to talk about today?????");
@@ -42,11 +40,6 @@ public class ChatbotController
 		
 	}
 		
-/**
- * Checks input for specific words, such as memes to reply with these comments, as well as if it is wrong it will reply with these comments.	
- * @param input
- * @return
- */
 	public String useChatbotCheckers(String input)
 	{
 		String answer = "";
@@ -70,5 +63,21 @@ public class ChatbotController
 		
 		return answer;
 	}
-}
+	
+	public void setBaseFrame(String baseFrame)
+	{
+		this.setbaseFrame = new baseFrame;
+	}
+	
+	public void handleErrors(Exception currentException)
+	{
+		display.displayMessage("An error has occured. Details provided next.");
+		display.displayMessage(currentException.getMessage());
+	}
+	
+	public ChatViewer getPopup()
+	{
+		return display;
+	}
+
 

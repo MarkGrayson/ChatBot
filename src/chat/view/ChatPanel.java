@@ -4,23 +4,12 @@ package chat.view;
  * Imports ChabotController
  */
 import chat.controller.ChatbotController;
-/**
- * Imports everything in java
- */
 import javax.swing.*;
-/**
- * Imports Color
- */
 import java.awt.Color;
-/**
- * Imports ActionEvent
- */
 import java.awt.event.ActionEvent;
-/**
- * Imports ActionListener
- */
 import java.awt.event.ActionListener;
-
+import javax.swing.JButton;
+import 
 /**
  * Extends JPanel to fit baseController, baseLayout, chatDisplay, chatField, and chatButton
  * @author mpal7487
