@@ -4,17 +4,13 @@ package chat.view;
  * Imports ChabotController
  */
 import chat.controller.ChatbotController;
+import chat.controller.FileController;
+
 import javax.swing.*;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import 
-/**
- * Extends JPanel to fit baseController, baseLayout, chatDisplay, chatField, and chatButton
- * @author mpal7487
- *
- */
+
 public class ChatPanel extends JPanel 
 {
 	private ChatbotController baseController;
@@ -22,6 +18,11 @@ public class ChatPanel extends JPanel
 	private JTextArea chatDisplay;
 	private JTextField chatField;
 	private JButton chatButton;
+	private JButton save;
+	private JButton load;
+	private JButton sendTweet;
+	private JButton searchtwitter;
+	private JButton twitterButton;
 	
 	/**
 	 * Adds SpringLayout, JTextArea, JTextField, and JButton to baseController. Changes the display size
@@ -31,11 +32,17 @@ public class ChatPanel extends JPanel
 	{
 		super();
 		this.baseController = baseController;
+		
 		baseLayout = new SpringLayout();
 		chatDisplay = new JTextArea(5, 25);
 		chatField = new JTextField(25);
+		chatButton = new JButton("chat with the bot");
+		twitterButton = new JButton();
+		sendTweet = new JButton();
+		save = new JButton();
+		load = new JButton();
 		
-		chatButton = new JButton("Chat with the bot");
+		
 		
 		setupChatDisplay();
 		setupPanel();
@@ -44,15 +51,18 @@ public class ChatPanel extends JPanel
 		
 	}
 	
-	/**
-	 * Makes it so that ChatDisplay is not editable
-	 */
+
 	private void setupChatDisplay()
 	{
 		chatDisplay.setEditable(false);
 		chatDisplay.setEnabled(false);
 		chatDisplay.setLineWrap(true);
 		chatDisplay.setWrapStyleWord(true);
+		chatPane.setViewrView(chatDisplay);
+		chatPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		chatPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		
+		
 		
 	}
 	
@@ -65,6 +75,10 @@ public class ChatPanel extends JPanel
 		this.setBackground(Color.BLUE);
 		this.add(chatDisplay);
 		this.add(chatButton);
+		this.add(twitterButton);
+		this.add(sendTweet);
+		this.add(save);
+		this.add(load);
 		this.add(chatField);
 	}
 	
@@ -80,7 +94,7 @@ public class ChatPanel extends JPanel
 		baseLayout.putConstraint(SpringLayout.WEST, chatField, 26, SpringLayout.WEST, this);
 		baseLayout.putConstraint(SpringLayout.EAST, chatDisplay, 0, SpringLayout.EAST, chatField);
 	}
-	
+
 	/**
 	 * Sets up a private Listener to see how to react to certain words.
 	 */
@@ -92,10 +106,33 @@ public class ChatPanel extends JPanel
 			{
 				String userWords = chatField.getText();
 				String botResponse = baseController.useChatbotCheckers(userWords);
+				String currentText = chatDisplay.getText();
 				
-				chatDisplay.setText("You said: " + userWords + "\n" + "ChatBot said: " + botResponse);
+				chatDisplay.setText("You said: " + userWords + "\n" + "ChatBot said: " + botResponse + "\n" + currentText);
+				chatDisplay.setCaretPosition(chatDisplay.getCaretPosition());
 				chatField.setText("");
 			}
-		});
-		}
+	});
+		
+	save.addActionListener(new ActionListener()
+			{
+				public void actionPerformed(ActionEvent click)
+				{
+						String fileName = chatField.getText();
+						
+						FileController.saveFile(baseController,  fileName.trim(), chatDisplay.getText());
+				}
+			});
+		
+	load.addActionListener(new ActionListener()
+			{
+			public void actionPerformed(ActionEvent click)
+				{
+				String fileName = chatField.getText() + ".txt";
+				String saved = FileController.readFile(baseController, fileName);
+				chatDisplay.setText(saved);
+				}
+			});
 }
+}
+			
