@@ -1,7 +1,7 @@
 package chat.controller;
 
 import chat.model.Chatbot;
-import chat.model.CTEC
+import chat.model.CTECTwitter;
 import chat.view.ChatViewer;
 
 public class ChatbotController 
@@ -69,6 +69,4 @@ public class ChatbotController
 	{
 		return display;
 	}
-
 }
-
