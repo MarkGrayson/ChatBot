@@ -1,26 +1,16 @@
 package chat.controller;
 
-/**
- * Imports Chatbot
- */
 import chat.model.Chatbot;
-/**
- * Imports ChatViewer
- */
+import chat.model.CTEC
 import chat.view.ChatViewer;
-/**
- * Uses public class ChatbotController with privates: stupidBot and chatView.
- * @author mpal7487
- *
- */
+
 public class ChatbotController 
 {
-	private Chatbot stupidBot;
-	private ChatViewer chatView;
+	stupidBot = new Chatbot("Boaty McBoatFace");
+	tweet = new CTECTwitter(this);
+	chatView = new ChatViewer();
+	baseFrame = new ChatFramej(this);
 	
-	/**
-	 * Uses privates to talk back to user.
-	 */
 	public ChatbotController()
 	{
 		stupidBot = new Chatbot("Tina ya fat lard!!!!");
@@ -80,4 +70,5 @@ public class ChatbotController
 		return display;
 	}
 
+}
 

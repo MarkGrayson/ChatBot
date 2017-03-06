@@ -133,6 +133,13 @@ public class ChatPanel extends JPanel
 				chatDisplay.setText(saved);
 				}
 			});
-}
-}
-			
+	
+	sendTweetButton.addActionListener(new ActionListener()
+			{
+		public void actionPerformed(ActionEvent click)
+		{
+			baseController.useTwitter(chatField.getText());
+		}
+	};
+	}
+}	
