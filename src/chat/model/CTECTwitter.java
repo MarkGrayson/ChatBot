@@ -54,6 +54,7 @@ public class CTECTwitter
 		Scanner boringWordScanner = new Scanner(this.getClass().getResourcesAsStream("commonWords.txt"));
 		while(boringWordScanner.hasNextLine())
 		{
+			boringWordScanner.nextLine();
 			wordCount++;
 		}
 		boringWordScanner.close();
@@ -62,7 +63,7 @@ public class CTECTwitter
 		
 		boringWordScanner = new Scanner(this.getClass().getResourceAsStream("commonWords.txt"));
 		
-		for(int index = 0; index < boirngWords.length; index++)
+		for(int index = 0; index < boringWords.length; index++)
 		{
 			boringWords[index] = boringWordScanner.next();
 		}
@@ -89,6 +90,19 @@ public class CTECTwitter
 		}
 	}
 	
+	private void turnTweetsToWords()
+	{
+		for(Status currentTweet : allTheTweets)
+		{
+			String text = currentTweet.getText();
+			String [] tweetWords = text.split(" ");
+			for(String word : tweetWords)
+			{
+				tweetedWords.add(word);
+			}
+		}
+	}
+	
 	private void removeBlankWords()
 	{
 		
@@ -103,8 +117,13 @@ public class CTECTwitter
 
 
 	{
+		gatherTheTweets(username);
+		turnTweetsToWords();
 		removeBoringWords();
 		removeBlankWords();
+		
+		String information = "The tweetcount is " + allTheTweets.size() + 
+				" and the word count after removal is " + tweetedWords.size();
 
 		return "";
 	}
@@ -118,7 +137,14 @@ public class CTECTwitter
 		
 		while(pageCount <= 10)
 		{
-			
+			try
+			{
+				allTheTweets.addAll(twitterBot.getUserTimeline(user, statusPage));
+			}
+			catch (TwitterException twitterError)
+			{
+				baseController.handleErrors(twitterError);
+			}
 			pageCount++;
 		}
 	}
