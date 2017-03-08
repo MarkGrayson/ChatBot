@@ -153,6 +153,9 @@ public class ChatPanel extends JPanel
 	searchTwitterButton.addActionListener(new ActionListener()
 			{
 		public void actionPerformed(ActionEvent click)
+		{
+			
+		}
 			}
 	}
 }	
