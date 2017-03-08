@@ -141,5 +141,18 @@ public class ChatPanel extends JPanel
 			baseController.useTwitter(chatField.getText());
 		}
 	});
+
+	postTweetButton.addActionListener(new ActionListerner()
+			{
+		public void actionPerformed(ActionEvent click)
+		{
+			
+		}
+			});
+	
+	searchTwitterButton.addActionListener(new ActionListener()
+			{
+		public void actionPerformed(ActionEvent click)
+			}
 	}
 }	

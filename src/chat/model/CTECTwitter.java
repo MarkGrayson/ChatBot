@@ -40,7 +40,17 @@ public class CTECTwitter
 		}
 	}
 	
-	public void createIgnoreWordList()
+	public String [] createIgnoreWordArray()
+	{
+		return null;
+	}
+	
+	private void removeBoringWords()
+	{
+		
+	}
+	
+	private void removeBlankWords()
 	{
 		
 	}
@@ -50,8 +60,14 @@ public class CTECTwitter
 		
 	}
 	
-	public String getMostCommonWord()
+	public String getMostPopularWord(String username)
+
 	{
-		return null;
+		return "";
+	}
+	
+	public void send(String textToTweet)
+	{
+		
 	}
 }
