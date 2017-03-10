@@ -21,8 +21,9 @@ public class ChatPanel extends JPanel
 	private JButton save;
 	private JButton load;
 	private JButton sendTweet;
-	private JButton searchtwitter;
+	private JButton searchTwitter;
 	private JButton twitterButton;
+	private JScrollPane chatPane;
 	
 	/**
 	 * Adds SpringLayout, JTextArea, JTextField, and JButton to baseController. Changes the display size
@@ -41,6 +42,7 @@ public class ChatPanel extends JPanel
 		sendTweet = new JButton();
 		save = new JButton();
 		load = new JButton();
+		chatPane = new JScrollPane();
 		
 		
 		
@@ -58,7 +60,7 @@ public class ChatPanel extends JPanel
 		chatDisplay.setEnabled(false);
 		chatDisplay.setLineWrap(true);
 		chatDisplay.setWrapStyleWord(true);
-		chatPane.setViewrView(chatDisplay);
+		chatPane.setViewportView(chatDisplay);
 		chatPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		chatPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		
@@ -142,20 +144,14 @@ public class ChatPanel extends JPanel
 		}
 	});
 
-	postTweetButton.addActionListener(new ActionListerner()
+	
+	searchTwitter.addActionListener(new ActionListener()
 			{
 		public void actionPerformed(ActionEvent click)
 		{
-			
+			String username = chatField.getText();
+			chatDisplay.append(baseController.searchTwitter(username));
 		}
 			});
-	
-	searchTwitterButton.addActionListener(new ActionListener()
-			{
-		public void actionPerformed(ActionEvent click)
-		{
-			
-		}
-			}
 	}
 }	

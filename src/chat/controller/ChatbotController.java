@@ -70,4 +70,17 @@ public class ChatbotController
 	{
 		return display;
 	}
+	
+	public void useTwitter(String text)
+	{
+		tweetBot.sendTweet(text);
+	}
+	
+	public String searchTwitter(String name)
+	{
+		String results = "The top word form user: " + name + " is: ";
+		results += tweetBot.getMostPopularWord(name);
+		
+		return results;
+	}
 }
