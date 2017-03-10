@@ -7,6 +7,7 @@ import twitter4j.TwitterException;
 import twitter4j.Status;
 import java.util.List;
 import java.util.Scanner;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import twitter4j.Paging;
 
@@ -51,7 +52,7 @@ public class CTECTwitter
 		String [] boringWords;
 		int wordCount = 0;
 		
-		Scanner boringWordScanner = new Scanner(this.getClass().getResourcesAsStream("commonWords.txt"));
+		Scanner boringWordScanner = new Scanner(this.getClass().getResourceAsStream("commonWords.txt"));
 		while(boringWordScanner.hasNextLine())
 		{
 			boringWordScanner.nextLine();
@@ -74,7 +75,7 @@ public class CTECTwitter
 	
 	private void removeBoringWords()
 	{
-		String [] boringWords = createIgnoredWordsArray();
+		String [] boringWords = createIgnoreWordArray();
 		
 		for(int index = 0; index < tweetedWords.size(); index++)
 		{
@@ -108,10 +109,6 @@ public class CTECTwitter
 		
 	}
 	
-	private void collectTweets(String username)
-	{
-		
-	}
 	
 	public String getMostPopularWord(String username)
 
@@ -132,6 +129,7 @@ public class CTECTwitter
 	{
 		tweetedWords.clear();
 		allTheTweets.clear();
+		
 		int pageCount = 1;
 		Paging statusPage = new Paging(1,200);
 		
@@ -159,28 +157,62 @@ public class CTECTwitter
 	{
 		String results = "";
 		String topWord = "";
-		int mostPopularIndex = 0;
+		int mostPopularIndex = -1;
 		int popularCount = 0;
 		
 		for (int index = 0; index < tweetedWords.size(); index++)
 		{
 			for (int searched = index +1; searched < tweetedWords.size(); searched++)
 		{
-				if(tweetedWords.get(index).equalsIgnoreCase(tweetedWords.get(searched)))
+				if(tweetedWords.get(index).equalsIgnoreCase(tweetedWords.get(searched)) && !tweetedWords.get(index).equals(mostPopularIndex))
 				{
-					currentPopularity++;
-			}
+					mostPopularIndex++;
+				}
 		}
-		if(currentPopularity > popularCount)
+		if(mostPopularIndex > popularCount)
 		{
-			popularCount = currentPopularity;
+			popularCount = mostPopularIndex;
 			mostPopularIndex = index;
 			topWord = tweetedWords.get(mostPopularIndex);
 		}
 	}
-		results += " the most popular word was " + topWord + ", and it occurred " + popularCount + "times.";
-		results += "\nThat means it has a percentage of " + popularCount/tweetedWords.size() * 100 + "%";
+		results += " the most popular word was " + topWord + ", and it occurred " + popularCount + " Times out of " +
+		tweetedWords.size() + "\nThat means it has a percentage of " + (DecimalFormat.getPercentInstance().format(((double) popularCount)/tweetedWords.size()));
 				
 		return results;
 	}
+	
+	private void turnStatusesToWords()
+	{
+		for(Status currentStatus : searchedTweets)
+		{
+			String tweetText = currentStatus.getText();
+			String [] tweetWords = tweetText.split("");
+			for(int index = 0; index < tweetWords.length; index++)
+			{
+				tweetedWords.add(removePunctuation(tweetWords[index]));
+			}
+			
+			for(String word : tweetWords)
+			{
+				tweetedWords.add(removePunctuation(word));
+			}
+		}
+	}
+
+
+private String removePunctuation(String currentString)
+{
+	String punctuation = ".,'?!:;\"(){}^[]<>-"; // think about adding
+												// hashtag and @
+	String scrubbedString = "";
+	for (int i = 0; i < currentString.length(); i++)
+	{
+		if (punctuation.indexOf(currentString.charAt(i)) == 1)
+		{
+			scrubbedString += currentString.charAt(i);
+		}
+	}
+	return scrubbedString;
+}
 }

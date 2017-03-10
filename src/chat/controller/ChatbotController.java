@@ -3,29 +3,30 @@ package chat.controller;
 import chat.model.Chatbot;
 import chat.model.CTECTwitter;
 import chat.view.ChatViewer;
+import chat.view.*;
 
 public class ChatbotController 
 {
-	stupidBot = new Chatbot("Boaty McBoatFace");
-	tweet = new CTECTwitter(this);
-	chatView = new ChatViewer();
-	baseFrame = new ChatFramej(this);
+	private Chatbot stupidBot;
+	private ChatViewer display;
+	private String baseFrame;
+	private CTECTwitter tweetBot;
 	
 	public ChatbotController()
 	{
 		stupidBot = new Chatbot("Tina ya fat lard!!!!");
-		chatView = new ChatViewer();
+		display = new ChatViewer();
 
 	}
 	
 	public void start()
 	{
-		String response = chatView.collectResponse("What do you want to talk about today?????");
+		String response = display.collectResponse("What do you want to talk about today?????");
 		
 		while(stupidBot.lengthChecker(response))
 		{
-			chatView.displayMessage(useChatbotCheckers(response));
-			response = chatView.collectResponse("oh, you are inrested in " + response);
+			display.displayMessage(useChatbotCheckers(response));
+			response = display.collectResponse("oh, you are inrested in " + response);
 		}
 		
 	}
@@ -56,7 +57,7 @@ public class ChatbotController
 	
 	public void setBaseFrame(String baseFrame)
 	{
-		this.setbaseFrame = new baseFrame;
+		this.baseFrame = baseFrame;
 	}
 	
 	public void handleErrors(Exception currentException)
