@@ -223,7 +223,7 @@ public class Chatbot
 			return false;
 		}
 		
-		int indexOfHas = input.indexOf("#");
+		int indexOfHash = input.indexOf("#");
 		int indexOfAt = input.indexOf("@");
 		
 		if(indexOfHash >= 0 || indexOfAt >= 0)
