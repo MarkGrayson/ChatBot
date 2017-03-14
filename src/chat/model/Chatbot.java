@@ -125,31 +125,179 @@ public class Chatbot
 		
 		return hasQuit;
 	}
-
-	public boolean memeChecker(String currentInput) {
-		return false;
-	}
-
-	public String getUserName() {
-		return null;
-	}
-
-	public String getContent() {
-		return null;
-	}
-
 	
-	public ArrayList<String> getMemesList() {
+	public boolean keyBoardMashChecker(String currentInput)
+	{
+		boolean hasKeyBoardMash = false;
+		
+		if(currentInput.equalsIgnoreCase("S.D.F"))
+		{
+			hasKeyBoardMash = false;
+		}
+		else if(currentInput.equalsIgnoreCase("derf"))
+		{
+			hasKeyBoardMash = false;
+		}
+		else if(currentInput.equalsIgnoreCase("sdf"))
+		{
+			hasKeyBoardMash = true;
+		}
+		else if(currentInput.equalsIgnoreCase("dfg"))
+		{
+			hasKeyBoardMash = true;
+		}
+		else if(currentInput.equalsIgnoreCase("cvb"))
+		{
+			hasKeyBoardMash = true;
+		}
+		else if(currentInput.equalsIgnoreCase(",./"))
+		{
+			hasKeyBoardMash = true;
+		}
+		
+		return hasKeyBoardMash;
+	}
+
+	public boolean memeChecker(String memeChecker) 
+	{
+		
+		boolean hasmemeChecker = false;
+		
+		if(memeChecker.equals("dodge"))
+		{
+			hasmemeChecker = true;
+		}
+		else if(memeChecker.equals("cute animals"))
+		{
+			hasmemeChecker = true;
+		}
+		
+		return hasmemeChecker;
+	}
+	
+	public void setUserName(String userName)
+	{
+		this.userName = userName;
+	}
+
+	public String getUserName() 
+	{
+		return null;
+	}
+	
+	public void setContent(String content)
+	{
+		this.content = content;
+	}
+
+	public String getContent() 
+	{
+		return content;
+	}
+	
+	public void setMemesList(ArrayList<String> memesList)
+	{
+		this.memesList = memesList;
+	}
+	
+	public ArrayList<String> getMemesList() 
+	{
 		return memesList;
 	}
 
-	
-	public ArrayList<String> getPoliticalTopicList() {
-		return null;
+	public void setpoliticalTopicList(ArrayList<String>politicalTopicList)
+	{
+		this.politicalTopicList = politicalTopicList;
 	}
-
 	
-	public void setContent(String content) {
+	public ArrayList<String> getPoliticalTopicList()
+	{
+		return politicalTopicList;
 	}
-
+	
+	public boolean twitterChecker(String input)
+	{
+		boolean looksTweetable = false;
+		if(input == null)
+		{
+			return false;
+		}
+		
+		int indexOfHas = input.indexOf("#");
+		int indexOfAt = input.indexOf("@");
+		
+		if(indexOfHash >= 0 || indexOfAt >= 0)
+		{
+			if(indexOfHash != - 1)
+			{
+				if(!input.substring(indexOfHash + 1, indexOfHash +2).equals(" "))
+				{
+					looksTweetable = true;
+				}
+			}
+		}
+		
+		return looksTweetable = true;
+	}
+	
+	public boolean inputHTMLChecker(String input)
+	{
+		boolean containsHTML = false;
+		
+		if(input == null || !input.contains("<"))
+		{
+			return containsHTML;
+		}
+		
+		int firstOpen = input.indexOf("<");
+		int firstClose = input.indexOf("< ", firstOpen);
+		int secondOpen = -9;
+		int secondClose = -9;
+		String tagText = "";
+		
+		if(input.contains("<>") || input.indexOf("< >") > -1)
+		{
+			containsHTML = false;
+		}
+		if(input.toUpperCase().contains("<P>") || input.toLowerCase().contains("<br>"))
+		{
+			containsHTML = true;
+		}
+		else if (firstClose > firstOpen)
+		{
+			tagText = input.substring(firstOpen + 1, firstClose).toLowerCase();
+			secondOpen = input.toLowerCase().indexOf("</" + tagText, firstClose);
+			
+			if(tagText.contains("a href=\""))
+			{
+				if(tagText.indexOf("\"", firstOpen+10) >= 0)
+				{
+					String remainder = input.substring(firstClose);
+					if(remainder.indexOf("</a>") >= 0)
+					{
+						containsHTML = true;
+					}
+				}
+			}
+			else if(secondOpen >= 0)
+			{
+				secondClose = input.indexOf(">", secondOpen + tagText.length());
+				String closingTag = input.toLowerCase().substring(secondOpen+2,secondClose);
+				if(secondClose >= 0 && closingTag.equals(tagText))
+				{
+					containsHTML = true;
+				}
+				else
+				{
+					containsHTML = false;
+				}
+			}
+			else
+			{
+				containsHTML = false;
+			}
+		}
+		
+		return containsHTML;
+	}
 }
